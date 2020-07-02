@@ -1,14 +1,8 @@
-import Head from 'next/head'
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main>
         <h1 className="title">
           点击访问 <Link href="/posts/first-post"><a>第一篇博客</a></Link>
