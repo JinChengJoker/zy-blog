@@ -5,7 +5,7 @@ import matter from "gray-matter";
 export const getPosts = async () => {
   const postsDirPath = path.join(process.cwd(), 'posts')
   const fileNames = fs.readdirSync(postsDirPath)
-  const posts = fileNames.map(fileName => {
+  return fileNames.map(fileName => {
     const filename = fileName.replace(/\.md$/g, '')
     const text = fs.readFileSync(path.join(postsDirPath, fileName), 'utf-8')
     const {data: {title, date}, content} = matter(text)
@@ -13,5 +13,4 @@ export const getPosts = async () => {
       filename, title, date, content
     }
   })
-  return posts
 }
