@@ -10,7 +10,10 @@ export const getPosts = async () => {
     const text = fs.readFileSync(path.join(postsDirPath, fileName), 'utf-8')
     const {data: {title, date}, content} = matter(text)
     return {
-      filename, title, date, content
+      filename,
+      title,
+      date: date.toLocaleDateString(),
+      content
     }
   })
 }

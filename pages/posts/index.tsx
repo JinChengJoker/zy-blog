@@ -1,20 +1,29 @@
 import React from "react";
-import {usePosts} from "hooks/usePosts";
+import {getPosts} from "../../lib/posts";
 
-export default () => {
-  const {posts, loading} = usePosts()
+type Props = {
+  posts: Post[]
+}
+
+export default (props: Props) => {
+  const {posts} = props
   return (
     <div>
       <h1>文章列表</h1>
-      {loading ? <div>正在加载</div> :
-        posts.length === 0 ? <div>没有文章</div> :
-          (
-            <ul>
-              {posts.map(post => (
-                <li key={post.filename}>{post.title}</li>
-              ))}
-            </ul>
-          )}
+      <ul>
+        {posts.map(post => (
+          <li key={post.filename}>{post.title}</li>
+        ))}
+      </ul>
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+  const posts = await getPosts()
+  return {
+    props: {
+      posts
+    }
+  }
 }
