@@ -1,27 +1,8 @@
-import React, {useEffect, useState} from "react";
-import axios from 'axios'
-
-type Post = {
-  filename: string
-  title: string
-  data: string
-  content: string
-}
+import React from "react";
+import {usePosts} from "hooks/usePosts";
 
 export default () => {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    axios.get('/api/v1/posts').then(
-      ({data}) => {
-        setPosts(data)
-        setLoading(false)
-      },
-      () => {
-        setLoading(false)
-      }
-    )
-  }, [])
+  const {posts, loading} = usePosts()
   return (
     <div>
       <h1>文章列表</h1>
