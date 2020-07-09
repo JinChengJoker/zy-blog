@@ -4,6 +4,6 @@
 type Post = {
   filename: string
   title: string
-  data: string
+  date: string
   content: string
 }
