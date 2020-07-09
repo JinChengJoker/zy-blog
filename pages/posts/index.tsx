@@ -1,5 +1,5 @@
 import React from "react";
-import {getPosts} from "../../lib/posts";
+import {getPosts} from "lib/posts";
 
 type Props = {
   posts: Post[]
